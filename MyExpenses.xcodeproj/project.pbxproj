@@ -21,6 +21,8 @@
 		3025918819C4318200703A8D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3025916A19C4317F00703A8D /* UIKit.framework */; };
 		3025919019C4318200703A8D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3025918E19C4318200703A8D /* InfoPlist.strings */; };
 		3025919219C4318200703A8D /* MyExpensesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3025919119C4318200703A8D /* MyExpensesTests.m */; };
+		3025919D19C4503300703A8D /* JGiTransactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3025919C19C4503300703A8D /* JGiTransactions.m */; };
+		302591A019C4510300703A8D /* JGiTrxnCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3025919F19C4510300703A8D /* JGiTrxnCategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		3025918D19C4318200703A8D /* MyExpensesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyExpensesTests-Info.plist"; sourceTree = "<group>"; };
 		3025918F19C4318200703A8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3025919119C4318200703A8D /* MyExpensesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyExpensesTests.m; sourceTree = "<group>"; };
+		3025919B19C4503300703A8D /* JGiTransactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGiTransactions.h; sourceTree = "<group>"; };
+		3025919C19C4503300703A8D /* JGiTransactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGiTransactions.m; sourceTree = "<group>"; };
+		3025919E19C4510300703A8D /* JGiTrxnCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGiTrxnCategory.h; sourceTree = "<group>"; };
+		3025919F19C4510300703A8D /* JGiTrxnCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGiTrxnCategory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,7 @@
 		3025916C19C4318000703A8D /* MyExpenses */ = {
 			isa = PBXGroup;
 			children = (
+				302591A119C451A200703A8D /* Classes */,
 				3025917519C4318100703A8D /* JGiAppDelegate.h */,
 				3025917619C4318100703A8D /* JGiAppDelegate.m */,
 				3025917819C4318100703A8D /* Main.storyboard */,
@@ -150,6 +157,17 @@
 				3025918E19C4318200703A8D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		302591A119C451A200703A8D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3025919E19C4510300703A8D /* JGiTrxnCategory.h */,
+				3025919F19C4510300703A8D /* JGiTrxnCategory.m */,
+				3025919B19C4503300703A8D /* JGiTransactions.h */,
+				3025919C19C4503300703A8D /* JGiTransactions.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,9 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302591A019C4510300703A8D /* JGiTrxnCategory.m in Sources */,
 				3025917D19C4318100703A8D /* JGiViewController.m in Sources */,
 				3025917319C4318000703A8D /* main.m in Sources */,
 				3025917719C4318100703A8D /* JGiAppDelegate.m in Sources */,
+				3025919D19C4503300703A8D /* JGiTransactions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JGiViewController : UIViewController
+float totalBalance;
+float accBalance;
+float cashBalance;
+float savingBalance;
+
+@interface JGiViewController : UIViewController <UITableViewDelegate, UITableViewDelegate> {
+    IBOutlet UITableView *transactionsView;
+    NSMutableArray *allTrxns;
+}
+
+@property (strong, nonatomic) IBOutlet UILabel *lblTotBalance;
+@property (strong, nonatomic) IBOutlet UILabel *lblAccBalance;
+@property (strong, nonatomic) IBOutlet UILabel *lblCashBalance;
+@property (strong, nonatomic) IBOutlet UILabel *lblSavBalance;
+
+@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *trxnList;
+
+- (IBAction)btnAddIncome:(UIButton *)sender;
+- (IBAction)btnAddExpense:(UIButton *)sender;
 
 @end

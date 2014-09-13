@@ -10,4 +10,9 @@
 
 @interface JGiTrxnCategory : NSObject
 
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *description;
+@property (nonatomic) float *amount;
+
+
 @end
