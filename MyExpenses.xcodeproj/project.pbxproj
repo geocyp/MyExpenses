@@ -23,6 +23,8 @@
 		3025919219C4318200703A8D /* MyExpensesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3025919119C4318200703A8D /* MyExpensesTests.m */; };
 		3025919D19C4503300703A8D /* JGiTransactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3025919C19C4503300703A8D /* JGiTransactions.m */; };
 		302591A019C4510300703A8D /* JGiTrxnCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3025919F19C4510300703A8D /* JGiTrxnCategory.m */; };
+		3031943319C5F7EB001FFCAB /* JGiNewRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3031943219C5F7EB001FFCAB /* JGiNewRecordViewController.m */; };
+		30D219B319C5700F004103B1 /* JGiAccounts.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D219B219C5700F004103B1 /* JGiAccounts.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,10 @@
 		3025919C19C4503300703A8D /* JGiTransactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGiTransactions.m; sourceTree = "<group>"; };
 		3025919E19C4510300703A8D /* JGiTrxnCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGiTrxnCategory.h; sourceTree = "<group>"; };
 		3025919F19C4510300703A8D /* JGiTrxnCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGiTrxnCategory.m; sourceTree = "<group>"; };
+		3031943119C5F7EB001FFCAB /* JGiNewRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGiNewRecordViewController.h; sourceTree = "<group>"; };
+		3031943219C5F7EB001FFCAB /* JGiNewRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGiNewRecordViewController.m; sourceTree = "<group>"; };
+		30D219B119C5700F004103B1 /* JGiAccounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGiAccounts.h; sourceTree = "<group>"; };
+		30D219B219C5700F004103B1 /* JGiAccounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGiAccounts.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,8 @@
 				3025917819C4318100703A8D /* Main.storyboard */,
 				3025917B19C4318100703A8D /* JGiViewController.h */,
 				3025917C19C4318100703A8D /* JGiViewController.m */,
+				3031943119C5F7EB001FFCAB /* JGiNewRecordViewController.h */,
+				3031943219C5F7EB001FFCAB /* JGiNewRecordViewController.m */,
 				3025917E19C4318200703A8D /* Images.xcassets */,
 				3025916D19C4318000703A8D /* Supporting Files */,
 			);
@@ -166,6 +174,8 @@
 				3025919F19C4510300703A8D /* JGiTrxnCategory.m */,
 				3025919B19C4503300703A8D /* JGiTransactions.h */,
 				3025919C19C4503300703A8D /* JGiTransactions.m */,
+				30D219B119C5700F004103B1 /* JGiAccounts.h */,
+				30D219B219C5700F004103B1 /* JGiAccounts.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -268,10 +278,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30D219B319C5700F004103B1 /* JGiAccounts.m in Sources */,
 				302591A019C4510300703A8D /* JGiTrxnCategory.m in Sources */,
 				3025917D19C4318100703A8D /* JGiViewController.m in Sources */,
 				3025917319C4318000703A8D /* main.m in Sources */,
 				3025917719C4318100703A8D /* JGiAppDelegate.m in Sources */,
+				3031943319C5F7EB001FFCAB /* JGiNewRecordViewController.m in Sources */,
 				3025919D19C4503300703A8D /* JGiTransactions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +489,7 @@
 				3025919719C4318200703A8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3025919819C4318200703A8D /* Build configuration list for PBXNativeTarget "MyExpensesTests" */ = {
 			isa = XCConfigurationList;
@@ -485,6 +498,7 @@
 				3025919A19C4318200703A8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

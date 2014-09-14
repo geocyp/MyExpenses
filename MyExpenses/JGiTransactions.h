@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JGiTrxnCategory.h"
+#import "JGiAccounts.h"
 
 #define TRXNDATE @"Transaction Date"
 #define TRXNAMT @"Transaction Amount"
@@ -18,9 +19,9 @@
 @interface JGiTransactions : NSObject
 
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic) float amount;
-@property (nonatomic) time_t date;
+@property (nonatomic, strong) NSNumber *amount;
+@property (nonatomic, strong) NSDate *trxndate;
 @property (nonatomic, strong) JGiTrxnCategory *Category;
-
+@property (nonatomic, strong) JGiAccounts *Account;
 
 @end

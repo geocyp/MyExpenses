@@ -16,29 +16,21 @@
 
 @implementation JGiViewController
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    // initialize variables
-    totalBalance = 0;
-    accBalance = 0;
-    cashBalance = 0;
-    savingBalance = 0;
-    
 
     // load values from datasource
-    allTrxns = [[NSMutableArray alloc] init];
+    NSLog(@"JGiViewController-viewDidLoad");
     
     // print the results on the screen
-    self.lblTotBalance.text = [NSString stringWithFormat:@"%.02f", totalBalance];
-    self.lblAccBalance.text = [NSString stringWithFormat:@"%.02f", accBalance];
-    self.lblCashBalance.text = [NSString stringWithFormat:@"%.02f", cashBalance];
-    self.lblSavBalance.text = [NSString stringWithFormat:@"%.02f", savingBalance];
-    NSLog(@"Been here");
-
+    [self reloadData];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -46,80 +38,70 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 - (IBAction)btnAddIncome:(UIButton *)sender {
-
-    UIAlertView *addIncome = [[UIAlertView alloc]
-                             initWithTitle:@"Add Income"
-                             message:@"Enter amount"
-                             delegate:self
-                             cancelButtonTitle:@"Cancel"
-                             otherButtonTitles:@"Add Income", nil];
-
-    addIncome.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [[addIncome textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeNumberPad];
-    [addIncome show];
 }
+
+
 
 - (IBAction)btnAddExpense:(UIButton *)sender {
-    UIAlertView *addExpense = [[UIAlertView alloc]
-                             initWithTitle:@"Add Expense"
-                             message:@"Enter amount"
-                             delegate:self
-                             cancelButtonTitle:@"Cancel"
-                             otherButtonTitles:@"Add Expense", nil];
-    
-    addExpense.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [[addExpense textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeNumberPad];
-    [addExpense show];
+    [self reloadData];
 }
 
+
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    if (buttonIndex == 1) {
-        float amount = [[[alertView textFieldAtIndex:0] text] floatValue];
+}
 
-        JGiTransactions *trxn = [[JGiTransactions alloc] init];
 
-        if ([title isEqualToString:@"Add Expense"]) {
-            trxn.title = @"Food @ Work";
-            trxn.amount = amount * -1;
-        }
-        else if ([title isEqualToString:@"Add Income"]) {
-            trxn.title = @"Salary";
-            trxn.amount = amount;
-        }
 
-        accBalance += trxn.amount;
-        [allTrxns addObject:[NSString stringWithFormat:@"%.02f", trxn.amount]];
-        trxn = nil;
-
-        for (NSString *string in allTrxns) {
-            NSLog(@"Transactions Array: %@", string);
-        }
-
-        totalBalance = accBalance + cashBalance;
-        [transactionsView reloadData];
-
-        self.lblTotBalance.text = [NSString stringWithFormat:@"%.02f", totalBalance];
-        self.lblAccBalance.text = [NSString stringWithFormat:@"%.02f", accBalance];
-        self.lblCashBalance.text = [NSString stringWithFormat:@"%.02f", cashBalance];
-        self.lblSavBalance.text = [NSString stringWithFormat:@"%.02f", savingBalance];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    JGiNewRecordViewController *nextView = segue.destinationViewController;
+    if ([sender tag] == 101) {
+        nextView.totalBalance = self.totalBalance;
+        nextView.accBalance = self.accBalance;
+        nextView.cashBalance = self.cashBalance;
+        nextView.savingBalance = self.savingBalance;
     }
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [allTrxns count];
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 5;//[allTrxnsTitle count];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = [allTrxns objectAtIndex:indexPath.row];
+//    cell.textLabel.text = [allTrxnsTitle objectAtIndex:indexPath.row];
+//    cell.detailTextLabel.text = [allTrxnsAmount objectAtIndex:indexPath.row];
     return cell;
 }
 
+
+
+- (void)printArray:(NSMutableArray *)array {
+    for (NSString *string in array) {
+        NSLog(@"Transactions Array: %@", string);
+    }
+}
+
+
+- (void)reloadData {
+    [transactionsView reloadData];
+    self.lblTotBalance.text = [NSString stringWithFormat:@"%.02f", self.totalBalance];
+    self.lblAccBalance.text = [NSString stringWithFormat:@"%.02f", self.accBalance];
+    self.lblCashBalance.text = [NSString stringWithFormat:@"%.02f", self.cashBalance];
+    self.lblSavBalance.text = [NSString stringWithFormat:@"%.02f", self.savingBalance];
+}
 @end
