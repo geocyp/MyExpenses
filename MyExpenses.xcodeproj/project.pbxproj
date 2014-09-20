@@ -22,10 +22,8 @@
 		3025919019C4318200703A8D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3025918E19C4318200703A8D /* InfoPlist.strings */; };
 		3025919219C4318200703A8D /* MyExpensesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3025919119C4318200703A8D /* MyExpensesTests.m */; };
 		3025919D19C4503300703A8D /* JGiTransactions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3025919C19C4503300703A8D /* JGiTransactions.m */; };
-		302591A019C4510300703A8D /* JGiTrxnCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3025919F19C4510300703A8D /* JGiTrxnCategory.m */; };
 		3031943319C5F7EB001FFCAB /* JGiNewRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3031943219C5F7EB001FFCAB /* JGiNewRecordViewController.m */; };
 		303E8B9519CDB10D002C352F /* JGiTrxnDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 303E8B9419CDB10D002C352F /* JGiTrxnDetails.m */; };
-		30D219B319C5700F004103B1 /* JGiAccounts.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D219B219C5700F004103B1 /* JGiAccounts.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,14 +58,10 @@
 		3025919119C4318200703A8D /* MyExpensesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyExpensesTests.m; sourceTree = "<group>"; };
 		3025919B19C4503300703A8D /* JGiTransactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGiTransactions.h; sourceTree = "<group>"; };
 		3025919C19C4503300703A8D /* JGiTransactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGiTransactions.m; sourceTree = "<group>"; };
-		3025919E19C4510300703A8D /* JGiTrxnCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGiTrxnCategory.h; sourceTree = "<group>"; };
-		3025919F19C4510300703A8D /* JGiTrxnCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGiTrxnCategory.m; sourceTree = "<group>"; };
 		3031943119C5F7EB001FFCAB /* JGiNewRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGiNewRecordViewController.h; sourceTree = "<group>"; };
 		3031943219C5F7EB001FFCAB /* JGiNewRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGiNewRecordViewController.m; sourceTree = "<group>"; };
 		303E8B9319CDB10D002C352F /* JGiTrxnDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGiTrxnDetails.h; sourceTree = "<group>"; };
 		303E8B9419CDB10D002C352F /* JGiTrxnDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGiTrxnDetails.m; sourceTree = "<group>"; };
-		30D219B119C5700F004103B1 /* JGiAccounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGiAccounts.h; sourceTree = "<group>"; };
-		30D219B219C5700F004103B1 /* JGiAccounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGiAccounts.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,12 +128,8 @@
 				3025917C19C4318100703A8D /* JGiViewController.m */,
 				3031943119C5F7EB001FFCAB /* JGiNewRecordViewController.h */,
 				3031943219C5F7EB001FFCAB /* JGiNewRecordViewController.m */,
-				3025919E19C4510300703A8D /* JGiTrxnCategory.h */,
-				3025919F19C4510300703A8D /* JGiTrxnCategory.m */,
 				3025919B19C4503300703A8D /* JGiTransactions.h */,
 				3025919C19C4503300703A8D /* JGiTransactions.m */,
-				30D219B119C5700F004103B1 /* JGiAccounts.h */,
-				30D219B219C5700F004103B1 /* JGiAccounts.m */,
 				303E8B9319CDB10D002C352F /* JGiTrxnDetails.h */,
 				303E8B9419CDB10D002C352F /* JGiTrxnDetails.m */,
 				3025917E19C4318200703A8D /* Images.xcassets */,
@@ -275,8 +265,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30D219B319C5700F004103B1 /* JGiAccounts.m in Sources */,
-				302591A019C4510300703A8D /* JGiTrxnCategory.m in Sources */,
 				3025917D19C4318100703A8D /* JGiViewController.m in Sources */,
 				3025917319C4318000703A8D /* main.m in Sources */,
 				3025917719C4318100703A8D /* JGiAppDelegate.m in Sources */,

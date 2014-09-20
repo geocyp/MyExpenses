@@ -49,37 +49,20 @@
     switch (indexPath.row)
     {
         case 0:
-            cell.textLabel.text = @"Nickname :";
-            cell.detailTextLabel.text = self.trxnObject.title;
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", self.trxnObject.trxndate];
             break;
-//        case 1:
-//            cell.textLabel.text = @"Diameter (km):";
-//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", self.spaceObject.diameter];
-//            break;
-//        case 2:
-//            cell.textLabel.text = @"Gravitational Force:";
-//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", self.spaceObject.gravitationalForce];
-//            break;
-//        case 3:
-//            cell.textLabel.text = @"Length of a Year (days):";
-//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", self.spaceObject.yearLength];
-//            break;
-//        case 4:
-//            cell.textLabel.text = @"Length of a Day (hours):";
-//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", self.spaceObject.dayLength];
-//            break;
-//        case 5:
-//            cell.textLabel.text = @"Temperature(celsius):";
-//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", self.spaceObject.temperature];
-//            break;
-//        case 6:
-//            cell.textLabel.text = @"Number of Moons";
-//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", self.spaceObject.numberOfMoons];
-//            break;
-//        case 7:
-//            cell.textLabel.text = @"Interesting Fact:";
-//            cell.detailTextLabel.text = self.spaceObject.interestFact;
-//            break;
+        case 1:
+            cell.textLabel.text = self.trxnObject.account;
+            break;
+        case 2:
+            cell.textLabel.text = self.trxnObject.category;
+            break;
+        case 3:
+            cell.textLabel.text = self.trxnObject.title;
+            break;
+        case 4:
+            cell.textLabel.text = [NSString stringWithFormat:@"%.02f", self.trxnObject.amount];
+            break;
         default:
             break;
     }
@@ -90,7 +73,7 @@
 /* The TableView will have 8 rows. */
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 5;
 }
 
 

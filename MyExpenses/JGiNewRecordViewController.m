@@ -54,9 +54,18 @@
 
 -(JGiTransactions *)returnNewTrxnObject
 {
+    NSDate *currDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"dd.MM.YY HH:mm:ss"];
+
     JGiTransactions *addedTrxnObject = [[JGiTransactions alloc] init];
+
     addedTrxnObject.title = self.titleTextField.text;
     addedTrxnObject.amount = [self.amountTextField.text floatValue];
+    addedTrxnObject.category = self.categoryTextField.text;
+    addedTrxnObject.trxndate = currDate;
+    addedTrxnObject.account = self.accountTextField.text;
+
     return addedTrxnObject;
 }
 
