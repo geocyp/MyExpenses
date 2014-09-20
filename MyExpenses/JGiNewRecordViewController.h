@@ -1,5 +1,5 @@
 //
-//  JGiNewRecordViewController.h
+//  JGiNewRecordTableViewController.h
 //  MyExpenses
 //
 //  Created by jio on 14/09/14.
@@ -7,22 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JGiViewController.h"
+#import "JGiTransactions.h"
 
-@interface JGiNewRecordViewController : UIViewController {
-    NSMutableArray *allTrxnsTitle;
-    NSMutableArray *allTrxnsAmount;
+@protocol JGiNewRecordViewControllerDelegate <NSObject>
 
-}
-@property (nonatomic) float totalBalance;
-@property (nonatomic) float accBalance;
-@property (nonatomic) float cashBalance;
-@property (nonatomic) float savingBalance;
+@required
 
-@property (strong, nonatomic) IBOutlet UITextField *txtTitle;
-@property (strong, nonatomic) IBOutlet UITextField *txtAmount;
-@property (strong, nonatomic) IBOutlet UITextField *txtCategory;
-@property (strong, nonatomic) IBOutlet UITextField *txtAccount;
+-(void)addObject:(JGiTransactions *)trxnObject;
+-(void)didCancel;
 
-- (IBAction)btnRecordItem:(UIButton *)sender;
+@end
+
+@interface JGiNewRecordViewController : UIViewController
+
+@property (weak, nonatomic) id <JGiNewRecordViewControllerDelegate> delegate;
+
+@property (strong, nonatomic) IBOutlet UITextField *accountTextField;
+@property (strong, nonatomic) IBOutlet UITextField *categoryTextField;
+@property (strong, nonatomic) IBOutlet UITextField *titleTextField;
+@property (strong, nonatomic) IBOutlet UITextField *amountTextField;
+
+- (IBAction)cancelButtonPressed:(UIButton *)sender;
+- (IBAction)addButtonPressed:(UIButton *)sender;
+
 @end

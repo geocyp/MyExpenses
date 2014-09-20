@@ -19,7 +19,7 @@
 @interface JGiTransactions : NSObject
 
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSNumber *amount;
+@property (nonatomic) float amount;
 @property (nonatomic, strong) NSDate *trxndate;
 @property (nonatomic, strong) JGiTrxnCategory *Category;
 @property (nonatomic, strong) JGiAccounts *Account;

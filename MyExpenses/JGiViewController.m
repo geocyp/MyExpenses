@@ -16,20 +16,23 @@
 
 @implementation JGiViewController
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-
-    // load values from datasource
-    NSLog(@"JGiViewController-viewDidLoad");
     
-    // print the results on the screen
-    [self reloadData];
 }
 
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[JGiNewRecordViewController class]]){
+        JGiNewRecordViewController *addObject = segue.destinationViewController;
+        addObject.delegate = self;
+    }
+}
 
 
 - (void)didReceiveMemoryWarning
@@ -40,68 +43,103 @@
 
 
 
-- (IBAction)btnAddIncome:(UIButton *)sender {
+#pragma mark - JGiNewRecordViewController Delegate
+-(void)didCancel
+{
+    NSLog(@"didCancel");
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 
-- (IBAction)btnAddExpense:(UIButton *)sender {
-    [self reloadData];
+-(void)addObject:(JGiTransactions *)trxnsObject
+{
+    if (!self.addedTrxns){
+        self.addedTrxns = [[NSMutableArray alloc] init];
+    }
+    [self.addedTrxns addObject:trxnsObject];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-}
-
-
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    JGiNewRecordViewController *nextView = segue.destinationViewController;
-    if ([sender tag] == 101) {
-        nextView.totalBalance = self.totalBalance;
-        nextView.accBalance = self.accBalance;
-        nextView.cashBalance = self.cashBalance;
-        nextView.savingBalance = self.savingBalance;
+# pragma mark - table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if ([self.addedTrxns count]){
+        return 2;
+    }
+    else {
+        return 1;
     }
 }
 
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    if (section == 1){
+        return [self.addedTrxns count];
+    }
+    else {
+        return [self.trxns count];
+    }
 }
 
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;//[allTrxnsTitle count];
-}
-
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    cell.textLabel.text = [allTrxnsTitle objectAtIndex:indexPath.row];
-//    cell.detailTextLabel.text = [allTrxnsAmount objectAtIndex:indexPath.row];
+    
+    // Configure the cell...
+    
+    if (indexPath.section == 1){
+        JGiTransactions *trxn = [self.addedTrxns objectAtIndex:indexPath.row];
+        cell.textLabel.text = trxn.title;
+        cell.detailTextLabel.text = trxn.title;
+    }
+    else {
+        JGiTransactions *trxn = [self.trxns objectAtIndex:indexPath.row];
+        cell.textLabel.text = trxn.title;
+        cell.detailTextLabel.text = trxn.title;
+    }
+    
     return cell;
 }
 
 
 
-- (void)printArray:(NSMutableArray *)array {
-    for (NSString *string in array) {
-        NSLog(@"Transactions Array: %@", string);
-    }
+# pragma mark UITableVIew Delegate
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"push to data" sender:indexPath];
 }
 
 
-- (void)reloadData {
-    [transactionsView reloadData];
-    self.lblTotBalance.text = [NSString stringWithFormat:@"%.02f", self.totalBalance];
-    self.lblAccBalance.text = [NSString stringWithFormat:@"%.02f", self.accBalance];
-    self.lblCashBalance.text = [NSString stringWithFormat:@"%.02f", self.cashBalance];
-    self.lblSavBalance.text = [NSString stringWithFormat:@"%.02f", self.savingBalance];
-}
+
+# pragma mark Print Array and Dictionary
+//- (void)printArray:(NSMutableArray *)array {
+//    for (NSString *string in array) {
+//        NSLog(@"Transactions Array: %@", string);
+//    }
+//}
+//
+//
+//
+//-(void) printDic: (NSDictionary *)dic {
+//    NSLog(@"VCDictionary: %@", dic);
+//}
+//
+
+# pragma mark Reload interface fields
+//- (void)reloadData {
+//    [transactionsView reloadData];
+//    self.lblTotBalance.text = [NSString stringWithFormat:@"%.02f", self.totalBalance];
+//    self.lblAccBalance.text = [NSString stringWithFormat:@"%.02f", self.accBalance];
+//    self.lblCashBalance.text = [NSString stringWithFormat:@"%.02f", self.cashBalance];
+//    self.lblSavBalance.text = [NSString stringWithFormat:@"%.02f", self.savingBalance];
+//}
+
 @end
