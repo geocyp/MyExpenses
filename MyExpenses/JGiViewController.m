@@ -18,12 +18,33 @@
 @implementation JGiViewController
 
 
-- (NSMutableArray *)addedTrxns
+- (NSMutableArray *)totalBalanceArray
 {
-    if (!_addedTrxns) {
-        _addedTrxns = [[NSMutableArray alloc] init];
+    if (!_totalBalanceArray) {
+        _totalBalanceArray = [[NSMutableArray alloc] init];
     }
-    return _addedTrxns;
+    return _totalBalanceArray;
+}
+- (NSMutableArray *)accountBalanceArray
+{
+    if (!_accountBalanceArray) {
+        _accountBalanceArray = [[NSMutableArray alloc] init];
+    }
+    return _accountBalanceArray;
+}
+- (NSMutableArray *)cashBalanceArray
+{
+    if (!_cashBalanceArray) {
+        _cashBalanceArray = [[NSMutableArray alloc] init];
+    }
+    return _cashBalanceArray;
+}
+- (NSMutableArray *)savingsBalanceArray
+{
+    if (!_savingsBalanceArray) {
+        _savingsBalanceArray = [[NSMutableArray alloc] init];
+    }
+    return _savingsBalanceArray;
 }
 
 
@@ -32,6 +53,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self reloadData];
     
 }
 
@@ -51,7 +73,7 @@
     {
         JGiTrxnDetails *targetViewController = segue.destinationViewController;
         NSIndexPath *path = [self.transactionsView indexPathForCell:sender];
-        JGiTransactions *selectedObject = self.addedTrxns[path.row];
+        JGiTransactions *selectedObject = self.totalBalanceArray[path.row];
         targetViewController.trxnObject = selectedObject;
     }
     
@@ -70,9 +92,24 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)addObject:(JGiTransactions *)trxnsObject
+-(void)addTrxnObject:(JGiTransactions *)trxnsObject
 {
-    [self.addedTrxns addObject:trxnsObject];
+    if ([trxnsObject.account isEqualToString: @"Cash"])
+    {
+        [self.cashBalanceArray addObject:trxnsObject];
+    }
+    else if ([trxnsObject.account isEqualToString: @"Savings"])
+    {
+        [self.savingsBalanceArray addObject:trxnsObject];
+    }
+    else if ([trxnsObject.account isEqualToString: @"Account"])
+    {
+        [self.accountBalanceArray addObject:trxnsObject];
+    }
+    
+    [self.totalBalanceArray addObject:trxnsObject];
+
+    [self reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -87,7 +124,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.addedTrxns count];
+    return [self.totalBalanceArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,10 +132,10 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    JGiTransactions *trxn = [self.addedTrxns objectAtIndex:indexPath.row];
+    JGiTransactions *trxn = [self.totalBalanceArray objectAtIndex:indexPath.row];
     cell.textLabel.text = trxn.title;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%.02f", trxn.amount];
-    
+
     return cell;
 }
 
@@ -106,6 +143,33 @@
 {
     [self performSegueWithIdentifier:@"push trxndetails" sender:indexPath];
 }
+
+
+
+# pragma mark - Handle balances
+
+- (void)reloadData {
+    // need to count the total in the array and print in TotalBalance
+    float totalBalance = [self countBalance:self.accountBalanceArray]
+                        + [self countBalance:self.cashBalanceArray]
+                        + [self countBalance:self.savingsBalanceArray];
+
+    self.totalBalanceLabel.text = [NSString stringWithFormat:@"%.02f", totalBalance];
+    self.accountBalanceLabel.text = [NSString stringWithFormat:@"%.02f", [self countBalance:self.accountBalanceArray]];
+    self.cashBalanceLabel.text = [NSString stringWithFormat:@"%.02f", [self countBalance:self.cashBalanceArray]];
+    self.savingsBalanceLabel.text = [NSString stringWithFormat:@"%.02f", [self countBalance:self.savingsBalanceArray]];
+}
+
+-(float)countBalance:(NSMutableArray *)array {
+    float balance = 0;
+
+    for (JGiTransactions *trxns in array) {
+        balance += trxns.amount;
+    }
+    return balance;
+}
+
+
 
 # pragma mark Print Array and Dictionary
 - (void)printArray:(NSMutableArray *)array {

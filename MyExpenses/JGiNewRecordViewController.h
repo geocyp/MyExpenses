@@ -13,7 +13,7 @@
 
 @required
 
--(void)addObject:(JGiTransactions *)trxnObject;
+-(void)addTrxnObject:(JGiTransactions *)trxnObject;
 -(void)didCancel;
 
 @end

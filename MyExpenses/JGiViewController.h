@@ -16,7 +16,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *cashBalanceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *savingsBalanceLabel;
 
-@property (strong, nonatomic) NSMutableArray *addedTrxns;
+@property (strong, nonatomic) NSMutableArray *totalBalanceArray;
+@property (strong, nonatomic) NSMutableArray *accountBalanceArray;
+@property (strong, nonatomic) NSMutableArray *cashBalanceArray;
+@property (strong, nonatomic) NSMutableArray *savingsBalanceArray;
 
 @property (strong, nonatomic) IBOutlet UITableView *transactionsView;
 @end

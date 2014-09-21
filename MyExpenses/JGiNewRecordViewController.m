@@ -49,7 +49,10 @@
 
 - (IBAction)addButtonPressed:(UIButton *)sender {
     JGiTransactions *newTrxnsObject = [self returnNewTrxnObject];
-    [self.delegate addObject:newTrxnsObject];
+    if (![newTrxnsObject.category isEqualToString:@"Salary"]) {
+        newTrxnsObject.amount *= -1;
+    }
+    [self.delegate addTrxnObject:newTrxnsObject];
 }
 
 -(JGiTransactions *)returnNewTrxnObject
